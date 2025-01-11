@@ -91,7 +91,7 @@ echo -E "env FZF_DEFAULT_OPTS='' SHELL=$ZSH_NAME $commands[fzf] ${(qq)fzf_opts[@
 {
   tmux popup -x $popup_x -y $popup_y \
        -w $popup_width -h $popup_height \
-       -d $PWD -E ". $tmp_dir/fzf-$$" || ret=$?
+       -d $PWD -E "printf '\033[6 q'; . $tmp_dir/fzf-$$" || ret=$?
   echo -E "$(<$tmp_dir/result-$$)"
 } always {
   command rm $tmp_dir/*-$$
